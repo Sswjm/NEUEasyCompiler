@@ -1,0 +1,35 @@
+PROGRAM  program id SUB_PROGRAM.
+SUB_PROGRAM  VARIABLE COM_SENTENCE
+VARIABLE  var ID_SEQUENCE ：TYPE ；
+ID_SEQUENCE  id {，id}
+TYPE  integer | real | char
+COM_SENTENCE  begin SEN_SEQUENCE {; SEN_SEQUENCE} end
+SEN_SEQUENCE EVA_SENTENCE|COND_SENTENCE|LOOP_SENTENCE|COM_SENTENCE
+
+EVA_SENTENCE  id PUSH(id):= EXPRESSION ASSI(=)     //赋值语句文法
+EXPRESSION  TERM{w1 TERM GEQ(w1)}
+TERM  FACTOR{w2 FACTOR GEQ(w2)}
+FACTOR  id PUSH(id) | cons PUSH(cons) | (EXPRESSION)
+//EXPRESSION  EXPRESSION + TERM | TERM
+//TERM  TERM *  FACTOR | FACTOR
+//FACTOR  id | cons | ( EXPRESSION )
+
+COND_SENTENCE  if LEXP then SEN_SEQUENCE [else SEN_SEQUENCE]   //条件语句
+LOOP_SENTENCE  while LEXP do SEN_SEQUENCE                      //循环语句
+LEXP  EXPRESSION LOP EXPRESSION
+LOP   < |　> | <= | >= | ==
+
+注：
+
+非终结符：
+PROGRAM：程序    SUB_PROGRAM：分程序     VARIABLE：变量说明
+ID_SEQUENCE：标识符表    TYPE：类型    COM_SENTENCE：复合语句
+SEN_SEQUENCE：语句表     EVA_SENTENCE：赋值语句     EXPRESSION：算数表达式
+TERM：项     FACTOR：因子     COND_SENTENCE：条件语句
+LOOP_SENTENCE：循环语句  LEXP：条件表达式  LOP：关系运算符
+
+终结符：
+
+动作序列：
+PUSH（id | cons）: 把当前字符压入语义栈
+GEQ( w )：生成表达式四元式

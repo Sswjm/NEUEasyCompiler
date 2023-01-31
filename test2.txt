@@ -1,0 +1,7 @@
+program example
+var a,b,x:integer;
+begin
+a:=2;
+b:=2*5+a;
+if a>=b then x:=(a+b)*c
+end.
