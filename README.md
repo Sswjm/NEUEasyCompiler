@@ -16,6 +16,8 @@ A easy Pascal compiler with cpp
 *lexanalyse.cpp* 词法分析器实现  
 *main.cpp* 主程序  
 *objectivecode.cpp* 目标代码生成实现 
+*parser.cpp* 语法分析实现  
+*symbl.cpp* 符号表实现  
 *synbl.cpp*  符号表实现  
 *grammer.txt* 文法说明  
 *test1.txt*, *test2.txt* 测试文本  
